@@ -1,10 +1,13 @@
 <resources>
-    <string name="app_name">HelloActivity</string>
-    <string name="greeting">Hello GeekBrains!</string>
-    <string name="helloer">GeekBrains</string>
-    <string name="morning">Good morning</string>
-    <string name="afternoon">Good afternoon</string>
-    <string name="evening">Good evening</string>
-    <string name="night">Good night</string>
+    <string name="app_name">WeatherApp</string>
+    <string name="offer">Select city:</string>
+    <string name="result">know the weather</string>
+    <string name="effect">show temperature</string>
+
+    <string name="app_name_s">SecondActivity</string>
+    <string name="activity_main">Activity Main!</string>
+    <string name="activity_second">Activity Second!</string>
+    <string name="to_second">Know the weather</string>
+    <string name="to_back">Back</string>
 
 </resources>

@@ -1,36 +1,29 @@
 package com.example.az.weatherapplication;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView;
-    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.textview_description);
-        Button button = findViewById(R.id.button_show_description);
-        button.setOnClickListener(onClickListener);
-        spinner = findViewById(R.id.spinner_for_cities);
-        String instanceState;
-        if (savedInstanceState == null) {
-            instanceState = "Первый запуск!";
-        } else {
-            instanceState = "Повторный запуск!";
-        }
-        Toast.makeText(getApplicationContext(), instanceState + " - onCreate()",
+        Toast.makeText(getApplicationContext(),"Main - onCreate()",
                 Toast.LENGTH_SHORT).show();
+        Button button = (Button) findViewById(R.id.button); // Кнопка
+        button.setOnClickListener(new StartSecondActivity(this)); // Обработка
     }
+
+
+
 
     @Override
     protected void onStart() {
@@ -88,17 +81,14 @@ public class MainActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
     }
 
-    private final View.OnClickListener onClickListener = new
-            View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (view.getId() == R.id.button_show_description) {
-                        String result = CitiesSpec.getEffect(MainActivity.this,
-                                spinner.getSelectedItemPosition());
-                        textView.setText(result);
-                    }
-                }
-            };
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent
+            data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK){
+            EditText num =  findViewById(R.id.editText2);
+            num.setText(data.getStringExtra("Number"));
+        }
+    }
 }
